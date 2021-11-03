@@ -1,14 +1,38 @@
-// tsrpfc
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import { makeStyles } from '@material-ui/core/styles';
+import { Dashboard, PeopleAlt } from '@material-ui/icons';
+import React from 'react';
 
-import * as React from 'react';
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
 
-export interface SidebarProps {
-}
+export default function Sidebar() {
+  const classes = useStyles();
 
-export function Sidebar (props: SidebarProps) {
   return (
-    <div>
-      
+    <div className={classes.root}>
+      <List component="nav" aria-label="main mailbox folders">
+        <ListItem button>
+          <ListItemIcon>
+            <Dashboard />
+          </ListItemIcon>
+          <ListItemText primary="Dashboard" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <PeopleAlt />
+          </ListItemIcon>
+          <ListItemText primary="Students" />
+        </ListItem>
+      </List>
     </div>
   );
 }
