@@ -12,7 +12,6 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <CssBaseline/>
       <ConnectedRouter history={history}>
         <CssBaseline />
         <App />
