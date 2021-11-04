@@ -12,7 +12,7 @@ function* handleLogin(payload: LoginPayload) {
             name: 'Duy Nguyen'
         }))
 
-        yield put(push('/admin'))
+        yield put(push('/admin/dashboard'))
     } catch (error: any) {
         yield put(authActions.loginFailed(error.message))
     }
