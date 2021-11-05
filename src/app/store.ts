@@ -3,6 +3,7 @@ import { Action, combineReducers, configureStore, ThunkAction } from '@reduxjs/t
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import authReducer from 'features/auth/authSlice';
 import dashboardReducer from 'features/dashboard/dashboardSlice';
+import studentReducer from 'features/student/studentSlice';
 import { history } from 'utils';
 import counterReducer from '../features/counter/counterSlice';
 import rootSaga from './rootSaga';
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
   router: connectRouter(history),
   counter: counterReducer,
   auth: authReducer,
-  dashboard: dashboardReducer
+  dashboard: dashboardReducer,
+  student: studentReducer
 })
 
 const sagaMiddleware = createSagaMiddleware();
