@@ -21,8 +21,8 @@ export default function StudentRankingList({ studentList }: StudentRankingListPr
   const classes = useStyles();
 
   return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
+    <TableContainer>
+      <Table className={classes.table} aria-label="simple table" size="small">
         <TableHead>
           <TableRow>
             <TableCell align="center">#</TableCell>

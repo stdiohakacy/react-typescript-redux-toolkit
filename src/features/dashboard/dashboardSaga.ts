@@ -48,6 +48,7 @@ function* fetchRankingByCityList() {
     const responseList: Array<ListResponse<Student>> = yield all(callList);
     const rankingByCityList: Array<RankingByCity> = responseList.map((student, idx) => ({
         cityId: cityList[idx].code,
+        cityName: cityList[idx].name,
         rankingList: student.data
     }))
     yield put(dashboardActions.setRankingByCityList(rankingByCityList))

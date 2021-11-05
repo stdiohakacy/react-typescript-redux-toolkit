@@ -87,6 +87,22 @@ export default function Dashboard () {
           </Grid>
         </Box>
       </Box>
+
+      {/* Rankings by city */}
+      <Box mt={5}>
+        <Typography variant="h4" >Rankings by city</Typography>
+        <Box mt={2}>
+          <Grid container spacing={3}>
+            {rankingByCityList.map(ranking => (
+              <Grid item xs={12} md={6} lg={3} key={ranking.cityId}>
+                <Widget title={ranking.cityName} >
+                  <StudentRankingList studentList={ranking.rankingList} />
+                </Widget>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+      </Box>
     </Box>
   )
 }
