@@ -5,7 +5,7 @@ import { Student } from "models";
 export interface DashboardStatistics {
     maleCount: number;
     femaleCount: number;
-    hightMarkCount: number;
+    highMarkCount: number;
     lowMarkCount: number;
 }
 
@@ -27,7 +27,7 @@ const initialState: DashboardState = {
     statistics: {
         maleCount: 0,
         femaleCount: 0,
-        hightMarkCount: 0,
+        highMarkCount: 0,
         lowMarkCount: 0,
     },
     highestStudentList: [],
