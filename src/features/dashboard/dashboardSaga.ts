@@ -34,7 +34,7 @@ function* fetchLowestStudentList() {
         _order: 'asc'
     });
 
-    yield put(dashboardActions.setHighestStudentList(data))
+    yield put(dashboardActions.setLowestStudentList(data))
 }
 function* fetchRankingByCityList() {
     const { data: cityList } : ListResponse<City> = yield call(cityApi.getAll)

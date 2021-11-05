@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     main: {
         gridArea: "main",
         backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(2, 3)
+        padding: theme.spacing(2)
     },
 }))
 
