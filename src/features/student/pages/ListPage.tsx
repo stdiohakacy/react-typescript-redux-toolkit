@@ -5,6 +5,7 @@ import StudentTableList from '../components/StudentTable';
 import { selectStudentFilter, selectStudentList, selectStudentPagination, studentActions } from '../studentSlice';
 import { Pagination } from '@material-ui/lab'
 import { selectLoading } from 'features/dashboard/dashboardSlice';
+import { selectCityMap } from 'features/city/citySlice';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,8 +31,9 @@ export default function ListPage () {
   const dispatch = useAppDispatch();
   const studentList = useAppSelector(selectStudentList);
   const pagination = useAppSelector(selectStudentPagination);
-  const filter = useAppSelector(selectStudentFilter)
-  const loading = useAppSelector(selectLoading)
+  const filter = useAppSelector(selectStudentFilter);
+  const loading = useAppSelector(selectLoading);
+  const cityMap = useAppSelector(selectCityMap);
 
   useEffect( () => {
     dispatch(studentActions.fetchStudentList(filter))
@@ -53,7 +55,7 @@ export default function ListPage () {
         <Button variant="contained" color="primary">Add new student</Button>
       </Box>
       {/* Student table */}
-      <StudentTableList studentList={studentList} />
+      <StudentTableList studentList={studentList} cityMap={cityMap} />
       {/* Pagination */}
       <Box my={2} display="flex" justifyContent="center" >
         <Pagination 
