@@ -5,7 +5,7 @@ import { ListParams, ListResponse, PaginationParams, Student } from "models";
 export interface StudentState {
     loading: boolean;
     list: Student[];
-    filter?: ListParams;
+    filter: ListParams;
     pagination: PaginationParams
 }
 
