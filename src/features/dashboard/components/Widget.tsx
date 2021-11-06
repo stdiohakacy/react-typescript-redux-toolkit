@@ -4,9 +4,9 @@ import * as React from 'react';
 const useStyles = makeStyles((theme) => ({
     root: {
         padding: theme.spacing(2),
-        border: `1px solid ${theme.palette.divider}`
-    }
-}))
+        border: `1px solid ${theme.palette.divider}`,
+    },
+}));
 
 export interface WidgetProps {
     title: string;
@@ -14,10 +14,11 @@ export interface WidgetProps {
 }
 
 export default function Widget ({title, children}: WidgetProps) {
-  return (
-      <Paper>
-          <Typography variant='button' >{title}</Typography>
-          <Box mt={2}>{children}</Box>
-      </Paper>
-  );
+    const classes = useStyles();
+    return (
+        <Paper className={classes.root}>
+            <Typography variant='button' >{title}</Typography>
+            <Box mt={2}>{children}</Box>
+        </Paper>
+    );
 }

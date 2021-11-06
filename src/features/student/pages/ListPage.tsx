@@ -5,7 +5,9 @@ import StudentTableList from '../components/StudentTable';
 import { selectStudentFilter, selectStudentList, selectStudentPagination, studentActions } from '../studentSlice';
 import { Pagination } from '@material-ui/lab'
 import { selectLoading } from 'features/dashboard/dashboardSlice';
-import { selectCityMap } from 'features/city/citySlice';
+import { selectCityList, selectCityMap } from 'features/city/citySlice';
+import StudentFilters from '../components/StudentFilter';
+import { ListParams } from 'models';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,6 +36,7 @@ export default function ListPage () {
   const filter = useAppSelector(selectStudentFilter);
   const loading = useAppSelector(selectLoading);
   const cityMap = useAppSelector(selectCityMap);
+  const cityList = useAppSelector(selectCityList)
 
   useEffect( () => {
     dispatch(studentActions.fetchStudentList(filter))
@@ -46,6 +49,14 @@ export default function ListPage () {
     }))
   }
 
+  const handleSearchChange = (newFilter: ListParams) => {
+    dispatch(studentActions.setFilterWithDebounce(newFilter));
+  };
+
+  const handleFilterChange = (newFilter: ListParams) => {
+    dispatch(studentActions.setFilter(newFilter));
+  };
+
   return (
     <Box className={classes.root}>
       {/* loading */}
@@ -53,6 +64,15 @@ export default function ListPage () {
       <Box className={classes.titleContainer}>
         <Typography variant="h4">Students</Typography>
         <Button variant="contained" color="primary">Add new student</Button>
+      </Box>
+
+      <Box mb={3}>
+        <StudentFilters 
+          filter={filter} 
+          cityList={cityList} 
+          onSearchChange={handleSearchChange} 
+          onChange={handleFilterChange}
+        />
       </Box>
       {/* Student table */}
       <StudentTableList studentList={studentList} cityMap={cityMap} />
