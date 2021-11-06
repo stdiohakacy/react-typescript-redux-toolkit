@@ -35,11 +35,11 @@ export const cityActions = citySlice.actions
 export const selectCityList = (state: RootState) => state.city.list
 export const selectCityMap = createSelector(selectCityList, 
     (cityList) => {
-        const response = cityList.reduce((map: { [key: string]: City }, city) => {
+        const citiesMapResponse = cityList.reduce((map: { [key: string]: City }, city) => {
             map[city.code] = city;
             return map;
         }, {})
-        return response;
+        return citiesMapResponse;
     }
 )
 // Reducers
