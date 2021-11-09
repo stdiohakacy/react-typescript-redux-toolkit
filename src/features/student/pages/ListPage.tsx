@@ -70,7 +70,7 @@ export default function ListPage () {
         <StudentFilters 
           filter={filter} 
           cityList={cityList} 
-          onSearchChange={handleSearchChange} 
+          onSearchChange={handleSearchChange}
           onChange={handleFilterChange}
         />
       </Box>
@@ -80,9 +80,9 @@ export default function ListPage () {
       <Box my={2} display="flex" justifyContent="center" >
         <Pagination 
           color="primary"
-          count={Math.ceil(pagination._totalRows / pagination._limit)} 
-          page={pagination._page} 
-          onChange={handlePageChange}
+          count={ Math.ceil(pagination._totalRows / pagination._limit) } 
+          page={ pagination._page } 
+          onChange={ handlePageChange }
         />
       </Box>
     </Box>
