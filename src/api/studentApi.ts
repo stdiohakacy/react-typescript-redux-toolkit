@@ -23,7 +23,7 @@ const studentApi = {
     },
 
     remove(id: string): Promise<any> {
-        const url = `/students${id}`;
+        const url = `/students/${id}`;
         return axiosClient.delete(url);
     }
 }
