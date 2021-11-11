@@ -4,12 +4,21 @@ import studentApi from 'api/studentApi';
 import { Student } from 'models';
 import React, { useState, useEffect } from 'react';
 import { Link, useParams} from 'react-router-dom'
+import StudentForm from '../components/StudentForm';
 
 export default function AddEditPage () {
   const { studentId } = useParams<{studentId: string}>();
   const isEdit = Boolean(studentId)
 
   const [student, setStudent] = useState<Student>();
+
+  const initialValues: Student = {
+    name: '',
+    age: '',
+    mark: '',
+    city: '',
+    ...student,
+  } as Student
 
   useEffect(() => {
     if(!studentId) return;
@@ -25,6 +34,10 @@ export default function AddEditPage () {
     })();
   })
 
+  const handleStudentFormSubmit = (formValues: Student) => {
+
+  }
+
   return (
     <Box>
       <Link to='/admin/students'>
@@ -34,9 +47,15 @@ export default function AddEditPage () {
       </Link>
       <Typography variant="h4">
         {
-          isEdit ? 'Update student' : 'add'
+          isEdit ? 'Update student' : 'Add new student'
         }
       </Typography>
+
+    {(!isEdit || Boolean(student)) && (
+      <Box>
+        <StudentForm initialValues={initialValues} onSubmit={handleStudentFormSubmit} />
+      </Box>
+    )}
     </Box>
   );
 }
