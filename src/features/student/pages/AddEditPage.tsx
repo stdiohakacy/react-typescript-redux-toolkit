@@ -1,9 +1,42 @@
-import * as React from 'react';
+import { Box, Typography } from '@material-ui/core';
+import { ChevronLeft } from '@material-ui/icons';
+import studentApi from 'api/studentApi';
+import { Student } from 'models';
+import React, { useState, useEffect } from 'react';
+import { Link, useParams} from 'react-router-dom'
 
 export default function AddEditPage () {
+  const { studentId } = useParams<{studentId: string}>();
+  const isEdit = Boolean(studentId)
+
+  const [student, setStudent] = useState<Student>();
+
+  useEffect(() => {
+    if(!studentId) return;
+
+    // IIFE
+    (async () => {
+      try {
+        const data = await studentApi.getById(studentId);
+        setStudent(data);
+      } catch (error) {
+        console.error(`Failed to fetch student detail`, error)
+      }
+    })();
+  })
+
   return (
-    <div>
-      Add Edit student page
-    </div>
+    <Box>
+      <Link to='/admin/students'>
+        <Typography variant="caption" style={{ display: "flex", alignItems: "center" }}>
+          <ChevronLeft /> Back to student list
+        </Typography>
+      </Link>
+      <Typography variant="h4">
+        {
+          isEdit ? 'Update student' : 'add'
+        }
+      </Typography>
+    </Box>
   );
 }
